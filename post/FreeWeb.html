@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>FreeWeb</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='网站搭建可以使用的免费资源合辑'><span>网站搭建可以使用的免费资源合辑</span></h1><blockquote><p><span>本站为临时网站，地址随时可能更改，请收藏友链以获取最新入口；</span></p><p><a href='http://blog.kermsite.ml/index.php/start-page.html' target='_blank' class='url'>http://blog.kermsite.ml/index.php/start-page.html</a></p><p><span>访问方法：chain-&gt;inside</span></p><p><span>此部分内容至少违反《</span><a href='https://www.zhihu.com/term/community'><span>知乎社区管理规定（试行）</span></a><span>》《bilibili创作公约》《简书社区管理规则》《Google Adsense内容规范》中一个或多个。</span></p><p><span>请大家不要将此部分内容转载到社交网站上，以免产生封号风险。</span></p></blockquote><p><span>我用过觉得可以的：</span></p><ul><li><span>服务器 VPS：Hax、Azure、DO</span></li><li><span>域名 Domain：Name.com、freenom</span></li><li><span>容器服务 Container：heroku</span></li><li><span>无服务器 Serverless：Glitch、Vercel</span></li><li><span>建站空间 Webhost：</span></li><li><span>临时服务器 Temporary：</span></li><li><span>编程平台 IDE：</span></li></ul><p><strong><span>其他我都觉得不太行，但仍列出，不保证最终质量，可以自行尝试</span></strong><span>。</span></p><p><span>此外，你也可以多多参考一下大佬的个人博客：</span></p><ul><li><span>优质服务器测评：</span><a href='https://www.daniao.org/'><span>大鸟博客-分享宝塔面板使用,VPS教程,域名教程以及互联网技巧的个人博客 (daniao.org)</span></a></li><li><span>各种免费资源：</span><a href='https://51.ruyo.net/'><span>如有乐享 - 分享是一种美德，是一种态度。 (ruyo.net)</span></a></li><li><span>主要分享免费域名：</span><a href='https://theblog.cn/'><span>星际博客 - 资源技术分享 (theblog.cn)</span></a></li><li><span>内容比较杂：</span><a href='https://www.cokemine.com/'><span>可乐博客-CokeMine | 各种教程|免费VPS|免费空间|免费资源|域名|CDN</span></a></li></ul><h2 id='虚拟专用服务器vps）'><strong><span>虚拟专用服务器（VPS）</span></strong></h2><h3 id='永久免费'><span>永久免费</span></h3><p><span>永久免费服务器，要么注册难，要么配置低，要么随机封，要么三者都占上。胜在永久免费。</span></p><h4 id='oracle-cloud-2台云服务器高配arm服务器'><span>Oracle Cloud 2台云服务器+高配arm服务器</span></h4><ul><li><p><span>听起来很Nice是不是。大家都是这么想的。那为什么甲骨文还没有被撸倒闭呢？请看限制。</span></p></li><li><p><span>官网：</span><a href='https://www.oracle.com/cn/index.html'><span>Oracle 甲骨文中国 | 集成的云应用和平台服务</span></a></p><ul><li><span>免费服务：</span><a href='https://www.oracle.com/cn/cloud/free/'><span>Oracle 云免费套餐 | Oracle 中国</span></a></li></ul></li><li><p><span>限制：</span></p><ul><li><span>需要外币</span><strong><span>信用卡</span></strong><span>（实测预付虚拟卡、无额度Visa卡不行）。并且能不能过看人品。</span></li><li><span>随机封号。</span></li></ul></li><li><p><span>是否使用：否，我**注册就没成功过。大家尽管尝试。</span></p></li><li><p><span>相关博客：</span></p><ul><li><a href='https://51.ruyo.net/14138.html'><span>申请Oracle Cloud永久免费服务+300美元试用额度</span></a></li><li><a href='https://51.ruyo.net/17163.html'><span>甲骨文云(Oracle Cloud)免费开通ARM云服务器</span></a></li></ul></li></ul><p><img src="https://cdn.jsdelivr.net/gh/yw2667899/pic/img/image-20211111081142404.png" referrerpolicy="no-referrer" alt="image-20211111081142404"></p><h4 id='google-computer-plate-超低配服务器'><span>Google Computer Plate 超低配服务器</span></h4><ul><li><p><span>谷歌也有永久免费服务器，但是真的真的配置低（由此逃过被撸爆的命运）。一个月只有1G免费流量，</span><strong><span>并且不包含到中国的流量</span></strong><span>。</span></p></li><li><p><span>官网：</span><a href='https://console.cloud.google.com/' target='_blank' class='url'>https://console.cloud.google.com/</a></p><ul><li><a href='https://cloud.google.com/free?hl=zh-cn'><span>免费试用和免费层级  | Google Cloud</span></a></li></ul></li><li><p><span>限制：</span></p><ul><li><span>官网国内无法访问。</span></li><li><span>需要外币</span><strong><span>信用卡</span></strong><span>。</span></li><li><span>配置非常低。</span></li><li><span>到中国流量收费。</span></li></ul></li><li><p><span>是否使用：否，限制多到我甚至不愿意为了它去绑卡。</span></p></li><li><p><span>注意：网上的很多信息已经过时，请注意最新政策与以前并不相同。</span></p></li><li><p><span>相关博客：</span></p><ul><li><a href='https://51.ruyo.net/2144.html'><span>Google Cloud服务免费申请试用以及使用教程</span></a></li><li><a href='https://www.chensnotes.com/server-auto-shutdown-script-after-certain-bandwidth-usage.html'><span>VPS流量超过一定数量后自动关机脚本</span></a></li></ul></li></ul><p><img src="https://cdn.jsdelivr.net/gh/yw2667899/pic/img/image-20211111081207261.png" referrerpolicy="no-referrer" alt="image-20211111081207261"></p><h4 id='haxcoid-纯ipv6低配服务器'><strong><span>hax.co.id</span></strong><span> 纯IPv6低配服务器</span></h4><ul><li><p><span>hax.co.id提供免费ipv6服务器，ipv6到ipv4的隧道服务，以及web端的ssh和文件管理服务。只需要你有一个telegram账号。当然配置比较低，但是部署几个小网站应该还是可以的（可能还需要抢）。七天一次延期，</span><strong><span>无限流量</span></strong><span>。</span></p></li><li><p><span>官网：</span><a href='https://hax.co.id/'><span>Linux VM for Everyone - Hax.co.id</span></a></p><ul><li><span>服务器空余情况：</span><a href='https://hax.co.id/server'><span>HAX&#39;s Server - Hax.co.id</span></a><span> 一般140就是满了，如果比这个少就赶快去抢吧。早上会容易抢到一点。</span></li></ul></li><li><p><span>限制：</span></p><ul><li><span>注册需要TG账号。</span></li><li><span>仅IPv6，但提供免费隧道和WebSSh。</span></li><li><span>7天不续删机。可能随机封号。</span></li><li><span>配置低。</span></li></ul></li><li><p><span>是否使用：是。</span></p><ul><li><span>使用体验：5个号里面封了2个，3个过期重开了。部署过探针和sharelist，未作为主力机。这个要用得爽还是要装warp，自己电脑最好有IPv6。</span></li></ul></li><li><p><span>相关博客</span></p><ul><li><a href='https://51.ruyo.net/17552.html'><span>Hax提供免费云服务器，欧洲数据中心，仅支持IPv6 - VPS|国外VPS - 如有乐享 (ruyo.net)</span></a></li><li><a href='https://p3terx.com/archives/cloudflare-warp-configuration-script.html'><span>Cloudflare WARP 一键配置脚本 使用教程 - P3TERX ZONE</span></a></li></ul></li></ul><p><img src="https://cdn.jsdelivr.net/gh/yw2667899/pic/img/v2-6888ab6eb60c5242f746d169f458d5e9_b.png" referrerpolicy="no-referrer" alt="img"></p><h4 id='euserv-纯ipv6低配服务器'><strong><span>Euserv 纯IPv6低配服务器</span></strong></h4><ul><li><p><span>EUserv 是一家德国主机商，提供免费ipv6主机服务器。身份验证极其离谱，至少我没成功过。</span></p></li><li><p><span>官网：</span><a href='https://www.euserv.com/de/?pk=0f178d0f3dd0f8f'><span>EUserv</span></a></p><ul><li><span>申请地址</span><a href='https://www.euserv.com/en/virtual-private-server/root-vserver/v2/vs2-free.php'><span>Rootserver VS2-free</span></a></li></ul></li><li><p><span>限制：</span></p><ul><li><span>只要一个邮箱就可以申请。</span></li><li><span>但是身份验证极其离谱，填不好根本不过。</span></li><li><span>一个月一续，可自动续。</span></li><li><span>配置低。</span></li></ul></li><li><p><span>是否使用：我**注册就没成功过。</span></p></li><li><p><span>相关博客：</span></p><ul><li><a href='https://www.daniao.org/8436.html'><span>EUserv 德国永久免费VPS申请与简单使用教程 </span></a></li><li><a href='https://www.daniao.org/11558.html'><span>EUserv免费IPv6 VPS手动续期以及如何通过Github Action每月自动续期</span></a></li></ul></li></ul><h3 id='限时免费'><span>限时免费</span></h3><p><span>许多平台都有新用户限时免费额度或限时体验。</span></p><h4 id='google-computer-plate'><span>Google Computer Plate</span></h4><ul><li><span>获享 $300 赠金，免费试用 90 天</span></li></ul><blockquote><p><span>详情见上</span></p></blockquote><h4 id='oracle-cloud'><span>Oracle Cloud</span></h4><ul><li><span>30 天免费试用，价值 300 美元的免费储值。</span></li></ul><blockquote><p><span>详情见上</span></p></blockquote><h4 id='微软azure'><span>微软Azure</span></h4><ul><li><p><span>绑定visa或者万事达卡送12个月的Linux、Windows虚拟机各一台，额外200USD（30天有效）。</span><strong><span>如果你是学生，有</span><code>edu.cn</code><span>结尾的邮箱，还可以享受学生优惠，无需绑卡，并且可以续期（我已经续期成功一年了），同样的免费服务，额外100USD但有效期为一年</span></strong><span>（学生参考</span><a href='https://zhuanlan.zhihu.com/p/429974339'><span>教程</span></a><span>）</span></p></li><li><p><span>官网：</span><a href='https://azure.microsoft.com/zh-cn/'><span>云计算服务 | Microsoft Azure</span></a><span>——认准com结尾，不要去世纪互联的国内版。</span></p><ul><li><a href='https://azure.microsoft.com/zh-cn/free/'><span>立即创建 Azure 免费帐户 | Microsoft Azure</span></a></li><li><a href='https://azure.microsoft.com/zh-cn/free/students/'><span>面向学生的 Azure - 免费帐户额度 | Microsoft Azure</span></a></li></ul></li><li><p><span>限制：</span></p><ul><li><strong><span>需要外币信用卡。</span></strong></li><li><span>有时候需要操作才能吃到免费服务。</span></li><li><span>200刀免费储值只有30天。</span></li><li><span>每月只有15G出站流量，超了要收钱，并且不便宜。</span></li><li><span>学生邮箱管制比较严。</span></li></ul></li><li><p><span>是否使用：是</span></p><ul><li><span>使用体验：我有教育帐户，所以体验非常好。除了不能做大量下载，跑网站、docker都很流畅。</span></li></ul></li><li><p><span>相关博客：</span></p><ul><li><a href='https://www.cnblogs.com/kklldog/p/azure-free-12m.html'><span>如何白嫖微软Azure12个月及避坑指南</span></a></li></ul></li></ul><h4 id='digital-ocean'><span>Digital Ocean</span></h4><ul><li><p><span>大带宽大流量。100USD赠金60天有效。</span><strong><span>学生包100USD赠金1年有效</span></strong><span>（学生参考</span><a href='https://zhuanlan.zhihu.com/p/429974339'><span>教程</span></a><span>）</span></p></li><li><p><span>官网：</span><a href='https://www.digitalocean.com/' target='_blank' class='url'>https://www.digitalocean.com/</a></p><ul><li><span>邀请链接：</span><a href='https://m.do.co/c/dfdb5565bd04' target='_blank' class='url'>https://m.do.co/c/dfdb5565bd04</a><span>（获取100USD）</span></li></ul></li><li><p><span>限制：</span></p><ul><li><span>有效期60天。</span></li><li><span>必须用国外信用卡或者PayPal验证。</span></li></ul></li><li><p><span>是否使用：是</span></p><ul><li><span>使用体验：同教育帐户。现在一台机器跑了emby和aria2，很好。</span></li></ul></li><li><p><span>相关博客：</span></p><ul><li><span>（我竟然没有找到合适的）</span></li></ul></li></ul><h4 id='亚马逊aws'><span>亚马逊AWS</span></h4><ul><li><p><span>一年免费服务器。</span></p></li><li><p><span>官网：</span><a href='https://aws.amazon.com/cn/?nc2=h_lg'><span>AWS 云服务-专业的大数据和云计算服务以及云解决方案提供商 (amazon.com)</span></a></p><ul><li><a href='https://aws.amazon.com/cn/free/?all-free-tier.sort-by=item.additionalFields.SortRank&amp;all-free-tier.sort-order=asc&amp;awsf.Free Tier Types=*all&amp;awsf.Free Tier Categories=*all'><span>亚马逊AWS海外区域账户免费套餐_免费云服务-AWS云服务 (amazon.com)</span></a></li></ul></li><li><p><span>限制：</span></p><ul><li><span>有效期1年。</span></li><li><span>必须用国外信用卡验证。</span></li></ul></li><li><p><span>是否使用：否，那位大佬用了分享一下。</span></p></li><li><p><span>相关博客：</span></p><ul><li><a href='https://www.cnblogs.com/ccw869476711/p/11534100.html'><span>免费服务器AWS免费使用一年详细教程 </span></a></li></ul></li></ul><h2 id='域名domain）'><span>域名（Domain）</span></h2><p><span>对于域名的注册，十分推荐关注</span><a href='https://theblog.cn/'><span>星际博客 - 资源技术分享 (theblog.cn)</span></a><span>这是一个专门分享免费域名信息的博客。</span></p><h3 id='freenom'><strong><span>freenom</span></strong></h3><ul><li><span>免费一级域名。无限续期。转移到dnspod或cloudflare可满足基本一切需求。</span></li><li><span>是否使用：当然。</span></li></ul><p><span>参考：</span><a href='http://blog.kermsite.ml/index.php/archives/34/'><span>在freenom免费注册顶级域名，解析到dnspod，部署自动续期 - KermBlog (kermsite.ml)</span></a></p><h4 id='ppua'><span>pp.ua</span></h4><ul><li><p><span>乌克兰官方的二级域名</span></p></li><li><p><span>是否使用：否，显示注册未成功。</span></p></li><li><p><span>相关博客：</span></p><ul><li><a href='https://www.daniao.org/13806.html'><span>pp.ua免费二级域名申请教程 - 大鸟博客 (daniao.org)</span></a></li></ul></li></ul><h4 id='enorg'><span>en.org</span></h4><ul><li><p><span>欧盟免费域名</span></p></li><li><p><span>是否使用：否，收不到注册邮件。</span></p></li><li><p><span>相关博客：</span></p><ul><li><a href='https://www.daniao.org/13789.html'><span>申请EU.org免费域名 – 其实这也是顶级域名 - 大鸟博客 (daniao.org)</span></a></li></ul></li></ul><h4 id='namecomnamecheap'><span>Name.com/Namecheap</span></h4><ul><li><span>Github学生包中包含一年的免费域名，Name.com无需信用卡，Namecheap则需要。</span></li><li><span>是否使用：是。</span></li></ul><p><span>参考：</span><a href='https://zhuanlan.zhihu.com/p/429974339'><span>不可错过的学生优惠（开发人员类） - 知乎 (zhihu.com)</span></a></p><p>&nbsp;</p><h2 id='容器服务container）'><span>容器服务（Container）</span></h2><h3 id='什么是容器技术'><span>什么是容器技术</span></h3><blockquote><p><a href='https://www.redhat.com/zh/topics/containers'><span>Linux® 容器</span></a><span>是与系统其他部分隔离开的一系列进程。运行这些进程所需的所有文件都由另一个镜像提供，这意味着从开发到测试再到生产的整个过程中，Linux 容器都具有可移植性和一致性。因而，相对于依赖重复传统测试环境的开发渠道，容器的运行速度要快得多。容器比较普遍也易于使用，因此也成了</span><a href='https://www.redhat.com/zh/topics/security'><span> IT 安全</span></a><span>方面的重要组成部分。</span></p></blockquote><p><span>容器技术是相对虚拟机而言的。虚拟机类似于一个独立的系统，对于一个虚拟机你可以最大限度的自由更改；而容器就是上面运行的应用程序，此时服务商已经帮你配置好系统了，你只需要将代码放上去，直接运行即可，当然，少了一些自由。</span></p><p><span>现在可以用的免费虚拟机还是比较少的。但容器技术嘛，正处在推广期，有很多平台就推出了免费的容器。用他们也可以部署很多有意思的服务。既节省了成本，又免去了配置系统环境的烦恼。</span></p><p><span>那么都有那些免费的容器平台呢？</span></p><h4 id='heroku'><span>heroku</span></h4><p><span>说到容器平台，就不得不提到大名鼎鼎的heroku了。</span></p><ul><li><span>官网：</span><a href='https://www.heroku.com/home'><span>Cloud Application Platform | Heroku</span></a></li></ul><p><img src="https://cdn.jsdelivr.net/gh/yw2667899/pic/img/image-20211102095531409.png" referrerpolicy="no-referrer" alt="image-20211102095531409"></p><ul><li><span>定价：免费版550h每月，加信用卡1000h每月</span><img src="https://cdn.jsdelivr.net/gh/yw2667899/pic/img/image-20211102095632152.png" referrerpolicy="no-referrer" alt="image-20211102095632152"></li><li><span>部署形式：Git和Docker</span></li><li><span>是否支持自定义域名：支持</span></li><li><span>是否休眠：当然会休眠，要不550完全不够一个月用。</span><strong><span>休眠后会自动删除所有数据</span></strong><span>。</span></li><li><span>注意事项：Heroku尽量使用靠谱VPN注册，有些项目可能被ban导致封号。有些项目可能被ban导致无法部署，此时先fork再部署。</span></li></ul><p><span>这个真的挺好用的。我的上网工具就是部署在heroku上，套一个cloudflare速度可以达到10M/s，看某Tube非常轻松。</span></p><h4 id='okteto'><span>Okteto</span></h4><p><span>okteto，基于k8s平台，可以部署docker应用，搭建个人网站什么的，GitHub登录。</span></p><p><span>和heroku类似。免费服务也有许多限制。不过oketeto不限制总时间，可以持续部署，并且可以多开。但是</span><strong><span>每隔24小时会强制休眠一次，删除所有数据</span></strong><span>。</span></p><ul><li><span>官网：</span><a href='https://cloud.okteto.com/' target='_blank' class='url'>https://cloud.okteto.com/</a></li></ul><p><img src="https://cdn.jsdelivr.net/gh/yw2667899/pic/img/image-20211103151635349.png" referrerpolicy="no-referrer" alt="image-20211103151635349"></p><ul><li><span>定价：</span></li></ul><p><img src="https://cdn.jsdelivr.net/gh/yw2667899/pic/img/image-20211103151550334.png" referrerpolicy="no-referrer" alt="image-20211103151550334"></p><ul><li><span>部署形式：Git和Docker</span></li><li><span>是否支持自定义域名：不支持</span></li><li><span>是否休眠：24小时休眠，删数据。</span></li><li><span>注意事项：okteto偏向于命令行开发。其后台界面十分简洁，基本上就只有一个部署功能。</span></li></ul><h3 id='goormide'><span>goormide</span></h3><p><span>实际上是一个云端的IDE空间，你可以简单认为是部署在服务器上的VSCODE。基于ubuntu，与上面不同的是，本服务可以直接SSH访问。</span></p><p><span>推荐就用它来coding。挺方便的。</span></p><p><span>参考文章：</span></p><ul><li><span>官网：</span><a href='https://ide.goorm.io/'><span>goormIDE - A Powerful Cloud IDE Service</span></a></li></ul><p><img src="https://cdn.jsdelivr.net/gh/yw2667899/pic/img/image-20211102232354766.png" referrerpolicy="no-referrer" alt="image-20211102232354766"></p><ul><li><span>定价：</span></li></ul><p><img src="https://cdn.jsdelivr.net/gh/yw2667899/pic/img/image-20211103151807492.png" referrerpolicy="no-referrer" alt="image-20211103151807492"></p><ul><li><span>部署形式：ssh直接连接</span></li><li><span>是否支持自定义域名：不支持</span></li><li><span>是否休眠：休眠，不删数据</span></li><li><span>注意事项：支持ssh连接，支持命令行，</span><strong><span>基本上就是个虚拟机</span></strong><span>。</span></li></ul><h3 id='railway'><span>Railway</span></h3><p><span>这个和okteto比较类似。我也用的比较少。</span></p><ul><li><span>官网：</span><a href='https://railway.app/'><span>Railway</span></a></li></ul><p><img src="https://cdn.jsdelivr.net/gh/yw2667899/pic/img/image-20211103152845609.png" referrerpolicy="no-referrer" alt="image-20211103152845609"></p><ul><li><span>定价：</span></li></ul><p><img src="https://cdn.jsdelivr.net/gh/yw2667899/pic/img/image-20211103153016432.png" referrerpolicy="no-referrer" alt="image-20211103153016432"></p><ul><li><span>部署形式：Github</span></li><li><span>是否支持自定义域名：不支持</span></li><li><span>是否休眠：不清楚</span></li><li><span>注意事项：支持ssh连接，支持命令行，</span><strong><span>基本上就是个虚拟机</span></strong><span>。</span></li></ul><h3 id='kubesail已失效）'><span>KubeSail（已失效？）</span></h3><p><span>之前看到在很多网站都推荐了这个。现在应该需要</span><strong><span>自己提供服务器</span></strong><span>，它只作为管理工具了（什么玩意儿）。</span></p><ul><li><span>官网</span><a href='https://kubesail.com/home'><span>KubeSail | KubeSail</span></a></li></ul><p><img src="https://cdn.jsdelivr.net/gh/yw2667899/pic/img/image-20211103152356276.png" referrerpolicy="no-referrer" alt="image-20211103152356276"></p><h3 id='ibm'><span>IBM</span></h3><p>&nbsp;</p><h2 id='无服务器-serverless'><span>无服务器 Serverless</span></h2><h3 id='简介什么是serverless'><span>简介：什么是Serverless</span></h3><p><span>你在一台VPS上安装了宝塔面板，通过宝塔面板的网站功能，你可以很方便的建立和管理静态或动态网站，不需要（如果你的VPS没挂的话）担心它运行在哪里，也不必再面对ssh界面。、</span></p><p><span>这个语境里，宝塔面板就类似于一个Serverless平台。我们的VPS就是那个Server。</span></p><p><span>通过serverless平台，你可以：</span></p><ul><li><span>部署静态（有些平台还支持动态）网站。</span></li><li><span>通过它提供的域名（有些还支持绑定域名）访问网站。</span></li><li><span>对网页的内容有完全的修改权（通常都支持Github拉取代码）。</span></li><li><span>方便地增加和删除项目。</span></li><li><span>一定的存储空间，流量。</span></li></ul><p><span>通过serverless平台，你不可以：</span></p><ul><li><span>直接ssh到网站所处的服务器。</span></li><li><span>对服务器实施删库跑路。</span></li><li><span>部署需要Linux环境的某些程序。</span></li></ul><h3 id='常见serverless平台推荐'><span>常见Serverless平台推荐</span></h3><p><span>腾讯云和阿里云、azure都有一定的serverless额度。这里就不写了。主要写一些国外的。</span></p><ul><li><p><a href='https://glitch.com/'><span>Glitch</span></a></p><ul><li><span>有PHP环境，可以用来搭onemanager</span></li><li><span>5分钟不访问休眠</span></li></ul></li><li><p><a href='https://vercel.com/'><span>Develop. Preview. Ship. For the best frontend teams – Vercel</span></a></p><ul><li><span>静态网页托管，自动匹配Github变化。适合搭建博客（hexo）</span></li></ul></li><li><p><a href='https://www.pythonanywhere.com/'><span>Host, run, and code Python in the cloud: PythonAnywhere</span></a></p><ul><li><span>运行python程序，参考链接2</span></li></ul></li><li><p><a href='https://streamlit.io/'><span>Streamlit • The fastest way to build and share data apps</span></a></p></li><li><p><a href='https://www.netlify.com/'><span>Netlify: Develop &amp; deploy the best web experiences in record time</span></a></p></li><li><p><a href='https://www.openode.io/'><span>Home | opeNode</span></a></p><ul><li><span>必须开源，说是学生可以使用私人项目，我倒是没有看到</span></li><li><span>没有实际使用过</span></li></ul></li></ul><p><span>参考：</span></p><ul><li><a href='https://rainchan.win/2021/01/26/在Glitch上部署你的Web应用/'><span>在Glitch上部署你的Web应用 | RainChan的小博客</span></a></li><li><a href='https://zhuanlan.zhihu.com/p/24650061#:~:text=与 PythonAnywhere 类似的免费平台还有 Heroku ， Openshift 等，收费平台有,阿里云 、 亚马逊 AWS 、 微软 Azure 等。'><span>把你开发的网站免费发布到互联网上 - 知乎 (zhihu.com)</span></a></li><li><a href='https://blog.csdn.net/pshu0_0/article/details/106913607'><span>给 node.js 白嫖怪的5个免费托管服务_pshu0_0的博客-CSDN博客</span></a></li><li><a href='https://aigisss.com/blog/posts/9604e2c1.html'><span>常见静态网站托管平台使用及多节点部署方案 - AIGISSS</span></a></li><li><a href='https://zhuanlan.zhihu.com/p/340882159'><span>三分钟了解 Serverless 是什么 - 知乎 (zhihu.com)</span></a></li></ul><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><h2 id='临时服务器temporary）'><span>临时服务器（Temporary）</span></h2><h3 id='katecode'><span>Katecode</span></h3><ul><li><a href='https://www.katacoda.com/'><span>Katacoda - Interactive Learning Platform for Software Engineers</span></a></li><li><span>无需注册，无需登录。</span></li><li><span>使用方法：进入官网，拉到下面可以看到playgrounds，选择最后一个即可</span></li></ul><p><img src="https://cdn.jsdelivr.net/gh/yw2667899/pic/img/image-20211106173248663.png" referrerpolicy="no-referrer" alt="image-20211106173248663"></p><ul><li><span>性能：</span></li></ul><p><img src="https://cdn.jsdelivr.net/gh/yw2667899/pic/img/image-20211106173417510.png" referrerpolicy="no-referrer" alt="image-20211106173417510"></p><h3 id='pwd'><span>PWD</span></h3><ul><li><a href='https://labs.play-with-docker.com/'><span>Play with Docker (play-with-docker.com)</span></a></li><li><span>无需注册，无需登录</span></li><li><span>每次最多使用4小时</span></li><li><span>自带docker环境，适合练习docker。</span></li></ul><p>&nbsp;</p><p>&nbsp;</p><h1 id='免费资源'><span>免费资源</span></h1><p><span>收集文章：</span></p><p><a href='https://free-for.dev/#/'><span>Free for developers (free-for.dev)</span></a></p><p><a href='https://github.com/255kb/stack-on-a-budget'><span>255kb/stack-on-a-budget: A collection of services with great free tiers for developers on a budget. Sponsored by Mockoon, the best mock API tool. https://mockoon.com (github.com)</span></a></p><p><a href='https://freeforstudents.org/'><span>FreeForStudents: Exclusive Freebies and Discounts</span></a></p><p><a href='https://github.com/ripienaar/free-for-dev#table-of-contents'><span>ripienaar/free-for-dev: A list of SaaS, PaaS and IaaS offerings that have free tiers of interest to devops and infradev (github.com)</span></a></p><p><a href='https://github.com/tvvocold/free-for-dev-zh'><span>tvvocold/free-for-dev-zh: 国内免费开发工具/服务清单 (github.com)</span></a></p><p><a href='https://github.com/tvvocold/how2makemoney'><span>tvvocold/how2makemoney: 帮助开发者赚钱的网站、产品/服务目录 (github.com)</span></a></p><p><a href='https://github.com/vincenthou/free-for-china-dev#baas'><span>vincenthou/free-for-china-dev: 受free-for-dev启发，用于收集国内SaaS, PaaS 和 IaaS 免费或者低付费服务，欢迎pull request (github.com)</span></a></p><p><a href='https://rs1.es/vps/'><span>VPS - RS1 Linux Tools</span></a></p><p><span>临时</span></p><p><a href='https://www.katacoda.com/'><span>Katacoda - Interactive Learning Platform for Software Engineers</span></a></p><p><a href='https://www.onworks.net/'><span>OnWorks Free hosting provider for Linux online</span></a></p><p><span>没弄懂：</span></p><p><a href='https://ruby-china.org/topics/37751'><span>推荐一个免费部署 Elixir/Phoenix 应用的网站 · Ruby China (ruby-china.org)</span></a></p><p><a href='https://console.gigalixir.com/#/apps/kerms/setup'><span>Gigalixir Console</span></a></p><p><a href='https://appharbor.com/pricing'><span>Pricing - AppHarbor</span></a></p><p><a href='https://www.cnblogs.com/sad-bird/articles/4604424.html'><span>免费的.Net云端运算服务——AppHarbor - 菜鸟吊思 - 博客园 (cnblogs.com)</span></a></p><p>&nbsp;</p><p>&nbsp;</p><h1 id='php空间'><span>PHP空间</span></h1><p><span>AD</span></p><p><a href='https://mjy.js.org/alwaysdata/'><span>Alwaysdata - MaJianyu&#39;s Blog (mjy.js.org)</span></a></p><p><a href='https://www.alwaysdata.com/en/'><span>Hosting made for everyone | alwaysdata</span></a></p><p><span>GH</span></p><p><a href='https://www.jianshu.com/p/c7794d63004d'><span>Gearhost 免费主机的申请 - 简书 (jianshu.com)</span></a></p><p><a href='https://www.gearhost.com/'><span>.NET and PHP Cloud Hosting | GearHost</span></a></p><p><span>已经失效了：</span></p><p><a href='https://www.gearhost.com/blog/free-cloudsite-plan-end-of-life'><span>Free Cloudsite Plan End of Life | GearHost</span></a></p><p><span>垃圾</span></p><p><a href='https://www.awardspace.com/'><span>Free Web Hosting with PHP, MySQL, Email Sending, No Ads | AwardSpace.com</span></a></p><p><a href='https://cp1.runhosting.com/'><span>FreeHostingNoAds (runhosting.com)</span></a></p><p>&nbsp;</p><h1 id='php'><span>?PHP</span></h1><p><a href='https://www.unkaer.cf/byhost.html'><span>byet免费空间 | Z7的小站 (unkaer.cf)</span></a></p><p><a href='https://byet.host/free-hosting'><span>Free Hosting (byet.host)</span></a></p><p><span>一直报错</span></p><p><a href='http://www.gppa.cn/archives/107/'><span>关于永久免费空间freehostia的测评 - 顾盼博客 (gppa.cn)</span></a></p><p><a href='https://www.freehostia.com/cart/payment/'><span>Freehostia.com</span></a></p><p><span>现在似乎没有免费的次级域名了。必须绑定域名才行。</span></p><p><a href='https://www.freehosting.com/' target='_blank' class='url'>https://www.freehosting.com/</a></p><p><span>同上，并且不支持freenom的</span></p><p><a href='https://www.000webhost.com/' target='_blank' class='url'>https://www.000webhost.com/</a></p><p><span>竟然能用，倍感惊喜。没有任何限制，非常nice</span></p><p><a href='https://www.cnblogs.com/beiwangshan/p/13829228.html'><span>WordPress 网站架设 InfinityFree 免费无限流虚拟主机申请与一键架设好WordPress - 北忘山 - 博客园 (cnblogs.com)</span></a></p><p><a href='https://app.infinityfree.net/' target='_blank' class='url'>https://app.infinityfree.net/</a></p><p><span>据说无限</span></p><p><a href='https://www.w3schools.com/'><span>W3Schools Online Web Tutorials</span></a></p><p><span>这才是W3school</span></p><p><span>相信大家最开始接触到建站的时候都是不太愿意为了服务器和域名花钱的。我也曾在知乎以及各大网站上搜索免费资源，但知乎上的大部分文章都是软广，通常都会推荐到某家坑钱的服务器公司去，这样我还不如买大厂最便宜的一年一百的云服务器呢。自己研究了一段时间后，回头发现知乎上的免费服务器信息是最乱的。真正要找免费低价服务器信息，最好是关注比较靠谱的博客，或者去GitHub之类的国外程序员集中地找。这里我先对最近收集到的一些免费信息做一个小总结，持续的更新会放在我的博客上。</span></p></div></div>
+</body>
+</html>
